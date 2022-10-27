@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=./deploy.yml
+name: lint
+
+on:
+  workflow_call:
+
+jobs:
+  lint:
+    name: Lint code
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Lint code
+      run: |
+        az bicep build --file deploy/main.bicep
